@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,7 +41,48 @@
 	</style>
 
 <script>
-    function _0x2152(_0x738013,_0x47e06f){var _0x841903=_0x8419();return _0x2152=function(_0x215277,_0x256942){_0x215277=_0x215277-0x1a7;var _0x5c4938=_0x841903[_0x215277];return _0x5c4938;},_0x2152(_0x738013,_0x47e06f);}function _0x8419(){var _0x10c65b=['Map\x20data:\x20&copy;\x20<a\x20href=\x22https://www.openstreetmap.org/copyright\x22>OpenStreetMap</a>\x20contributors,\x20<a\x20href=\x22http://viewfinderpanoramas.org\x22>SRTM</a>\x20|\x20Map\x20style:\x20&copy;\x20<a\x20href=\x22https://opentopomap.org\x22>OpenTopoMap</a>\x20(<a\x20href=\x22https://creativecommons.org/licenses/by-sa/3.0/\x22>CC-BY-SA</a>)','1322559mQfcta','18zgrvGL','1828540QpufQQ','8qdeipb','control','getBounds','©\x20OpenStreetMap\x20contributors,\x20Tiles\x20style\x20by\x20Humanitarian\x20OpenStreetMap\x20Team\x20hosted\x20by\x20OpenStreetMap\x20France','ready','https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png','Census\x202021','getCenter','addOverlay','&copy;\x20<a\x20href=\x22http://www.openstreetmap.org/copyright\x22>OpenStreetMap</a>','setView','249313WuGctI','map','https://data.colorado.gov/api/geospatial/trm9-dm4m?method=export&format=GeoJSON','Highway\x20Markers','addTo','layers','panTo','https://tile.openstreetmap.org/{z}/{x}/{y}.png','428931qbQSWS','getJSON','577796EzseuZ','geoJSON','850794ohJVlz','4exiLsF','1560205fzsqZo'];_0x8419=function(){return _0x10c65b;};return _0x8419();}var _0x2cce3e=_0x2152;(function(_0x485c81,_0x88b629){var _0x53feac=_0x2152,_0x151320=_0x485c81();while(!![]){try{var _0x68c65c=parseInt(_0x53feac(0x1c3))/0x1+parseInt(_0x53feac(0x1af))/0x2+-parseInt(_0x53feac(0x1b5))/0x3+parseInt(_0x53feac(0x1b2))/0x4*(-parseInt(_0x53feac(0x1b3))/0x5)+parseInt(_0x53feac(0x1b6))/0x6*(parseInt(_0x53feac(0x1b1))/0x7)+-parseInt(_0x53feac(0x1b8))/0x8*(parseInt(_0x53feac(0x1ad))/0x9)+parseInt(_0x53feac(0x1b7))/0xa;if(_0x68c65c===_0x88b629)break;else _0x151320['push'](_0x151320['shift']());}catch(_0x5f5b19){_0x151320['push'](_0x151320['shift']());}}}(_0x8419,0x459d2),$(document)[_0x2cce3e(0x1bc)](function(){var _0x2b2b79=_0x2cce3e;map=L['map'](_0x2b2b79(0x1c4))[_0x2b2b79(0x1c2)]([0x0,0x0],0xa);var _0x2c33b3=L['tileLayer'](_0x2b2b79(0x1ac),{'maxZoom':0x13,'attribution':_0x2b2b79(0x1c1)})[_0x2b2b79(0x1a9)](map),_0x249f8b=L['tileLayer']('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',{'maxZoom':0x13,'attribution':_0x2b2b79(0x1bb)}),_0xd573f7=L['tileLayer'](_0x2b2b79(0x1bd),{'maxZoom':0x13,'attribution':_0x2b2b79(0x1b4)}),_0x1fd8ca={'OpenStreetMap':_0x2c33b3,'Humanitarian\x20OSM':_0x249f8b,'OpenTopoMap':_0xd573f7},_0x55a36e=L[_0x2b2b79(0x1b9)][_0x2b2b79(0x1aa)](_0x1fd8ca,null)[_0x2b2b79(0x1a9)](map);$[_0x2b2b79(0x1ae)]('./acs_denver_2021.geojson',function(_0x57ea6f){var _0x48ab6b=_0x2b2b79;acsDenver2021Layer=L[_0x48ab6b(0x1b0)](_0x57ea6f)[_0x48ab6b(0x1a9)](map),map[_0x48ab6b(0x1ab)](acsDenver2021Layer[_0x48ab6b(0x1ba)]()[_0x48ab6b(0x1bf)]()),_0x55a36e[_0x48ab6b(0x1c0)](acsDenver2021Layer,_0x48ab6b(0x1be));}),$[_0x2b2b79(0x1ae)](_0x2b2b79(0x1a7),function(_0x23cdde){var _0x2a7d68=_0x2b2b79;newLayer=L[_0x2a7d68(0x1b0)](_0x23cdde),_0x55a36e[_0x2a7d68(0x1c0)](newLayer,_0x2a7d68(0x1a8));});}));
+
+        // the document ready wraps our javascript
+	// to make sure that everything loads in the 
+	// right order
+	$(document).ready(function() {
+
+		// let's create our basemap! -- ##1 here
+map = L.map('map',{center: [0,0], zoom: 10});
+		
+		// let's add three sets of background tiles - one from OSM,  one from HOT OSM, and one from openTopoMap
+		var OSMTiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+			maxZoom: 19,
+			attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+		}).addTo(map);
+		var HOTOSMTiles = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+			maxZoom: 19,
+    			attribution: '© OpenStreetMap contributors, Tiles style by Humanitarian OpenStreetMap Team hosted by OpenStreetMap France'});
+		var OpenTopoMap = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+			maxZoom: 19,
+			attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'});
+
+		// this is an object to keep track of our three basemaps -- ##2 here
+var baseMaps = {"OpenStreetMap" : OSMTiles, 
+		"Humanitarian OSM" : HOTOSMTiles,
+		"OpenTopoMap" : OpenTopoMap}; 
+		
+
+		// the control let's the user turn on / off layers -- ##3 here
+var layerControl=L.control.layers(baseMaps, null).addto(map);
+		// let's add the Denver ACS data -- ##4 here
+
+
+		// let's try to add some remote DRCOG data
+		$.getJSON('https://data.colorado.gov/api/geospatial/trm9-dm4m?method=export&format=GeoJSON', function(data) {
+			newLayer = L.geoJSON(data);
+			layerControl.addOverlay(newLayer, "Highway Markers");
+		});
+
+
+	// end document ready
+	});
+
 </script>
 </head>
 <body>
@@ -56,4 +96,3 @@
 
 
 </body>
-</html>
