@@ -70,8 +70,15 @@ var baseMaps = { "OpenStreetMap" : OSMTiles,
 
 		// the control let's the user turn on / off layers -- ##3 here
 var layerControl = L.control.layers(baseMaps, null).addTo(map);
+		
 		// let's add the Denver ACS data -- ##4 here
+		$.getJSON('./acs_denver_2021.geojson',function(data)  {
+			acsDenver2021Layer = L.geoJSON(data).addTo(map);
 
+			map.panTo(acsDenver2021Layer.getBounds().getCenter());
+
+			layerControl.addOverlay(acsDenver2021Layer, "Census 2021");
+		});
 
 		// let's try to add some remote DRCOG data
 		$.getJSON('https://data.colorado.gov/api/geospatial/trm9-dm4m?method=export&format=GeoJSON', function(data) {
