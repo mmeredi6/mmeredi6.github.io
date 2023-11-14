@@ -97,7 +97,7 @@ var layerControl = L.control.layers(baseMaps, null).addTo(map);
                                  { style: style1,
 					onEachFeature : function (feature, layer) {
 						layer.bindPopup ("Percent Poverty: "+
-								 feature.properties.PCT_POVERTY + "%";
+								 feature.properties.PCT_POVERTY + "%");
 					}
 				     }).addTo(map);
 
