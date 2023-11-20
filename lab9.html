@@ -74,12 +74,12 @@ var layerControl = L.control.layers(baseMaps, null).addTo(map);
 		// let's add the Denver ACS data -- ##4 here
 		  function style1(feature) {
 			  d= feature.properties.BACHELORS_OR_HIGHER_EDU;
-			  answer = d > 30 ? '#800026' :
-				  	d > 100 ? '#EFF3FF' :
-				  	d > 500 ? '#BDD7E7' :
-				  	d > 1000 ? '#6BAED6' :
-				  	d > 2000 ? '#3182BD' :
-				  	d > 2500 ? '#08519C' :;
+			  answer = d < 50 ? '#800026' :
+				  	d < 100 ? '#EFF3FF' :
+				  	d < 500 ? '#BDD7E7' :
+				  	d < 1000 ? '#6BAED6' :
+				  	d < 2000 ? '#3182BD' :
+				  	d < 2500 ? '#08519C' :;
 			  style = {
 				fillColor : answer,
 				weight 	: 1,
